@@ -29,7 +29,7 @@ public class MemberController {
 
     // 로그인
     @PostMapping("/login")
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.OK)
     public LoginResponse login(@Valid @RequestBody LoginRequest request) {
         return memberService.login(request.getEmail(),request.getPassword());
     }
