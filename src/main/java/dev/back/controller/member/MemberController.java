@@ -1,5 +1,7 @@
 package dev.back.controller.member;
 
+import dev.back.dto.auth.LoginRequest;
+import dev.back.dto.auth.LoginResponse;
 import dev.back.dto.member.SignUpRequest;
 import dev.back.dto.member.SignUpResponse;
 import dev.back.service.member.MemberService;
@@ -23,5 +25,12 @@ public class MemberController {
                signUpRequest.getPassword(),
                signUpRequest.getNickname()
        );
+    }
+
+    // 로그인
+    @PostMapping("/login")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public LoginResponse login(@Valid @RequestBody LoginRequest request) {
+        return memberService.login(request.getEmail(),request.getPassword());
     }
 }
